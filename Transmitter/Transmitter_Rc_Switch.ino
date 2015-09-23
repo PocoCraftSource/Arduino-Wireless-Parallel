@@ -11,7 +11,7 @@
 #include <SPI.h>
 
 const byte LATCH = 9;
-byte optionSwitch;
+byte shift_1;
 
 RCSwitch mySwitch = RCSwitch();
 
@@ -28,6 +28,6 @@ void setup() {
 void loop() {
   digitalWrite(LATCH, LOW);
   digitalWrite(LATCH, HIGH);
-  optionSwitch = SPI.transfer(0);
-  mySwitch.send(optionSwitch, 24);
+  shift_1 = SPI.transfer(0);
+  mySwitch.send(shift_1, 24);
 }
