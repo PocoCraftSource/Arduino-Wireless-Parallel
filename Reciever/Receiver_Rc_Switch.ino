@@ -16,7 +16,11 @@ void setup() {
 void loop() {
   if (mySwitch.available()) {
     unsigned long res = mySwitch.getReceivedValue();
-    shiftOut(data, clock, MSBFIRST, res);
+    if(res != 1337) {
+      shiftOut(data, clock, MSBFIRST, res);
+    } else {
+      shiftOut(data, clock, MSBFIRST, B00000000);
+    }
     mySwitch.resetAvailable();
   }
 }

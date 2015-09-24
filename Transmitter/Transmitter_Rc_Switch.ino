@@ -29,5 +29,9 @@ void loop() {
   digitalWrite(LATCH, LOW);
   digitalWrite(LATCH, HIGH);
   shift_1 = SPI.transfer(0);
-  mySwitch.send(shift_1, 24);
+  if(shift_1 != 0) {
+    mySwitch.send(shift_1, 24);
+  } else {
+    mySwitch.send(1337, 24);
+  }
 }
